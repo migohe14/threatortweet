@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/app.component.scss';
+
+$base-color: #222b45;
+$border-dark: rgba($base-color, 0.88);
+
+.btn-primary{
+    background-color: $base-color;
+    border-color: $base-color;
+}
+
+.btn-primary:hover{
+    background-color: $border-dark;
+    border-color: $border-dark;
+}
+
+.bg-dark{
+    background-color: $base-color !important;
+}

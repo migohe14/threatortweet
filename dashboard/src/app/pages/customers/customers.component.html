@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 col-xs-12">
+      <div class="row">
+        <div class="col-12 mb-5"><i><strong>*Important:</strong> This web is a personal project that uses Twitter standard API (free) by default. This plan has rate limit. 
+          This means that there may be temporary service interruptions.<br><br>
+          You can configure <a href="https://developer.twitter.com/en" target="blank">your twitter keys</a> that will be stored in your localstorage. These keys must be sent to the server, so I advise you to regenerate them when you finish using the web.   </i></div>
+      </div>
+      <form class="row mb-5" [formGroup]="keysForm">
+      <div class="col-12 mb-5">        
+          <label class="switch">
+          <input type="checkbox" formControlName="active" (change)="activeOwnKeys()">
+          <span class="slider round"></span>
+        </label>
+        <label class="ml-3" *ngIf="!keysForm.value.active">Use API Twitter keys by default</label>
+        <label class="ml-3" *ngIf="keysForm.value.active">Use my own API Twitter keys</label>
+      </div>
+      <div class="col-12">
+        <div class="form-group">
+        <label>Consumer key</label>
+        <input type="text" class="form-control" placeholder="Enter consumer key" formControlName="consumer_key">
+      </div>
+      </div>
+      <div class="col-12">
+        <div class="form-group">
+          <label>Consumer secret</label>
+          <input type="text" class="form-control" placeholder="Enter consumer secret" formControlName="consumer_secret">
+        </div>
+      </div>
+      <div class="col-12">
+      <div class="form-group">
+        <label>Access token</label>
+        <input type="text" class="form-control" placeholder="Enter access token" formControlName="access_token">
+      </div>
+      </div>
+      <div class="col-12">
+      <div class="form-group">
+        <label>Access token secret</label>
+        <input type="text" class="form-control" placeholder="Enter access token secret" formControlName="access_token_secret">
+      </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" (click)="setKeys()">Set keys</button>
+      </div>
+      </form>
+      <div class="alert alert-success mt-3 mb-3" role="alert" *ngIf="keysAdded">
+        API keys added with success!
+      </div>
+    </div>
+  </div>
+</div>

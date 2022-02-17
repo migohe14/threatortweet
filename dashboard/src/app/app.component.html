@@ -1,0 +1,64 @@
+<div *ngIf="home">
+  <div class="sidenav">
+    <div class="login-main-text">
+      <div class="row">
+        <div class="col-4">
+          <img src="../../../assets/logo.png" class="" width="100" height="100" alt="">
+        </div>
+        <div class="col-8">
+          <h1>Threat<br> or tweet</h1>
+          <p>Hunting malware in Twitter in real time.</p>
+        </div>
+      </div>
+    </div>
+ </div>
+ <div class="main mb-5">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+          <form>
+           
+             <!-- Desktop -->
+             <div class="d-none d-sm-block">
+               <button type="submit" class="btn btn-vt form-rounded mr-4" (click)="startHunting()">Start to hunting</button>
+               <!-- <a class="btn btn-secondary form-rounded">Register</a> -->
+             </div>
+
+             <!-- Mobile -->
+             <div class="d-block d-sm-none">
+               <button type="submit" class="btn btn-vt form-rounded mr-4 col-12 mt-4" (click)="startHunting()">Start to hunting</button>
+               <!-- <a class="btn btn-secondary form-rounded col-12 mt-4">Register</a> -->
+             </div>
+          </form>
+       </div>
+    </div>
+ </div>
+</div>
+<div *ngIf="!home && !mobile">
+  <app-header class="header-ctn"></app-header>
+  <div class="container-fluid">
+    <div clasS="row mt-5">
+      <div class="col-md-2 sidebar d-none d-lg-block">
+          <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-md-8 col-xs-12 offset-3 mt-5">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!home && mobile">
+<app-header class="header-ctn"></app-header>
+  <div class="container">
+    <div clasS="row mt-5">
+      <div class="col-12 mt-5">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)"
+             size="medium"
+             color="#fff"
+             type="ball-scale-multiple">
+</ngx-spinner>

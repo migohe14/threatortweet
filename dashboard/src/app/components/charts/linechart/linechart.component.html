@@ -1,0 +1,60 @@
+<div>
+    <div class="row mt-5 mb-3">
+      <div class="col-12 mb-3"><i>Enter the domain/word/phrases you want to track (ex. bitcoin) and find malware</i></div>
+      <div class="col-6"><input [(ngModel)]="wordToTrack" class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"></div>
+      <div class="col-2" *ngIf="!tracking"><button class="btn btn-primary" (click)="track()">Track</button></div>
+      <div class="col-2" *ngIf="tracking"><button class="btn btn-danger" (click)="stopTweets()">Stop</button></div>
+    </div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
+      </canvas>
+    </div>
+     <div *ngIf="!tracking && tweets.length >= 0" class="custom-control custom-checkbox mr-sm-2 mt-4 mb-4">
+        <div class="row">
+          <div class="col-2">
+            <input type="checkbox" class="custom-control-input" id="positives" (change)="getAlerts()" [(ngModel)]="onlyAlerts">
+            <label class="custom-control-label" for="positives">Alerts</label>
+          </div>
+          <div class="col-2">
+            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" (change)="getOnlyHttp()" [(ngModel)]="onlyHttp">
+            <label class="custom-control-label" for="customControlAutosizing">Only http</label>
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" (keyup)="filterTweets($event)">
+          </div>
+        </div>
+      </div>
+    
+    <div class="table-responsive">
+      <table class="table mb-5">
+        <thead>
+          <tr>
+            <th scope="col">Link</th>
+            <th scope="col">Report VT</th>
+            <th scope="col">Analyze</th>
+            <th scope="col">Tweet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tweet of tweets.slice().reverse(); let i = index">
+            <td class="truncate" [ngClass]="tweet.positives > 0 ? 'alert-text' : ''">{{ tweet.link }}</td>
+            <td *ngIf="!tweet.reportAvailable">
+            <i class="fa fa-times"></i>
+            </td>
+            <td *ngIf="tweet.reportAvailable"><a href="{{ tweet.report }}" target="blank"><i class="fa fa-external-link"></i></a></td>
+            <td><a href="{{ tweet.analyze }}" target="blank"><i class="fa fa-search"></i></a></td>
+            <td>
+              <!-- <a href="{{'https://twitter.com/' + tweet.user + '/status/' + tweet.tweet}}" target="blank"><i class="fa fa-external-link"></i></a> -->
+              <iframe border=0 frameborder=0 height=250 width=550
+              [src]="sanitize(tweet.user, tweet.tweet)"></iframe>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
