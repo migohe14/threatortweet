@@ -29,7 +29,7 @@ To get the Twitter API key you need to sign up for a developer account and creat
 Create `sockets-api/api_keys.env` file with your API keys:
 
 ```
-VIRUSTOTAL_API_KEY = ""
+VIRUSTOTAL_API_KEY = "",
 
 TWITTER_CONSUMER_KEY: "",
 TWITTER_CONSUMER_SECRET: "",
