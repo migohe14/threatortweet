@@ -1,3 +1,5 @@
+// sockets-api/whiteList.js
+
 exports.whiteList = [
     'https://facebook',
     'https://www.youtube',

@@ -1,3 +1,5 @@
+// sockets-api/config.js
+
 const dotenv = require('dotenv');
 dotenv.config({ path: './api_keys.env' });
 exports.credentials = {
