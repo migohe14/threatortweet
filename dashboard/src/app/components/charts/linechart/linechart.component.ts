@@ -146,7 +146,7 @@ export class LinechartComponent implements OnInit {
       this.tweetsService.getReport().subscribe((data) => {
         let report: any = data
         this.tweets.map((tw)=>{
-          if(report) {
+          if(report && `${tw.link}/` === report.report.data.attributes.last_final_url) {
             tw.report = `https://www.virustotal.com/gui/url/${report.report.data.id}`;
             tw.reportAvailable = true;
             tw.positives = report.report.data.attributes.last_analysis_stats.malicious;
