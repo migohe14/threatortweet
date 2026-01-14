@@ -54,5 +54,3 @@ Once the app is launched, you can search for terms or hashtags and track tweets 
 
 :warning: **If you want to test, make sure you don't endanger other users. Don't share malware on Twitter!**
 
-### URL of the project
-[https://virustotal-tweets-analyzer.netlify.app/](https://virustotal-tweets-analyzer.netlify.app).
